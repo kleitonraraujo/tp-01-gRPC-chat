@@ -1,0 +1,17 @@
+syntax = "proto3"; //Specify proto3 version.
+
+//Service class to be used by the clients
+service Chat {
+    rpc Stream(Empty) returns (stream Post){}
+    rpc Login(Post) returns (Empty){}
+    rpc Logout(Post) returns (Empty){}
+    rpc Send(Post) returns (Empty){}
+}
+
+//Information that will be passed between client and service
+message Post {
+    string user = 1;
+    string message = 2;
+}
+
+message Empty {}
